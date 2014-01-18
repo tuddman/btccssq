@@ -14,19 +14,20 @@
                  [com.taoensso/timbre "2.7.1"]
                  [prismatic/dommy "0.1.2"]
                  [com.taoensso/tower "2.0.1"]
-                 [org.clojure/clojure "1.5.1"]
-                 [cljs-ajax "0.2.2"]
+                 [cljs-ajax "0.2.3"]
                  [compojure "1.1.6"]
                  [selmer "0.5.8"]
                  [lib-noir "0.7.9"]
                  [com.postspectacular/rotor "0.1.0"]]
 
-  :plugins [[lein-cljsbuild "1.0.1-SNAPSHOT"]]
+  :plugins [[lein-cljsbuild "1.0.1"]
+            [lein-ring "0.8.10"]
+            [lein-environ "0.4.0"]]
 
   :repl-options
   {:init-ns btccssq.repl}
 
-    :cljsbuild {
+  :cljsbuild {
     :builds {
              :dev {
                    :source-paths ["src-cljs"]
@@ -43,21 +44,14 @@
                                :pretty-print false
                                :source-map "resources/public/js-min/cljs-min.js.map"}}}}
 
-  :ring
-  {:handler btccssq.handler/app,
-   :init btccssq.handler/init,
-   :destroy btccssq.handler/destroy}
-  :profiles
-  {:uberjar {:aot :all},
-   :production
-   {:ring
-    {:open-browser? false, :stacktraces? false, :auto-reload? false}},
-   :dev
-   {:dependencies [[ring-mock "0.1.5"] [ring/ring-devel "1.2.1"]],
+  :ring {:handler btccssq.handler/app,
+         :init btccssq.handler/init,
+         :destroy btccssq.handler/destroy}
+
+  :profiles {:uberjar {:aot :all},
+             :production {:ring
+                         {:open-browser? false, :stacktraces? false, :auto-reload? false}},
+             :dev {:dependencies [[ring-mock "0.1.5"] [ring/ring-devel "1.2.1"]],
     :env {:selmer-dev true}}}
 
-  :plugins
-  [[lein-ring "0.8.10"]
-   [lein-environ "0.4.0"]
-   [lein-cljsbuild "0.3.3"]]
   :min-lein-version "2.0.0")

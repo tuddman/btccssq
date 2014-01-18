@@ -6,6 +6,8 @@ goog.addDependency("../ajax/core.js", ['ajax.core'], ['goog.json.Serializer', 'g
 goog.addDependency("../domina/support.js", ['domina.support'], ['cljs.core', 'goog.dom', 'goog.events']);
 goog.addDependency("../domina.js", ['domina'], ['goog.dom.classes', 'cljs.core', 'goog.string', 'goog.dom', 'clojure.string', 'goog.dom.xml', 'goog.style', 'goog.dom.forms', 'domina.support', 'goog.events']);
 goog.addDependency("../domina/events.js", ['domina.events'], ['cljs.core', 'goog.object', 'domina', 'goog.events']);
+goog.addDependency("../om/dom.js", ['om.dom'], ['cljs.core']);
+goog.addDependency("../om/core.js", ['om.core'], ['cljs.core', 'om.dom']);
 goog.addDependency("../dommy/attrs.js", ['dommy.attrs'], ['cljs.core', 'clojure.string']);
 goog.addDependency("../dommy/template.js", ['dommy.template'], ['dommy.attrs', 'cljs.core', 'clojure.string']);
-goog.addDependency("../btccssq/main.js", ['btccssq.main'], ['cljs.core', 'ajax.core', 'domina.events', 'dommy.template', 'domina']);
+goog.addDependency("../btccssq/main.js", ['btccssq.main'], ['cljs.core', 'ajax.core', 'domina.events', 'om.core', 'dommy.template', 'domina', 'om.dom']);

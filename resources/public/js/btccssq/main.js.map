@@ -2,15 +2,19 @@
  "file":
  "/Users/scott/Desktop/Sites/bitcoin/btccssq/resources/public/js/btccssq/main.js",
  "sources":["main.cljs"],
- "lineCount":24,
+ "lineCount":62,
  "mappings":
- "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",
+ "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",
  "names":
- ["p__7110", "map__7112", "cljs.core/seq?", "cljs.core/apply",
-  "cljs.core/hash-map", "cljs.core/get", "btccssq.main/render-message",
-  "message", "user", "btccssq.main/render-messages", "messages",
-  "messages-div", "domina/by-id", "domina/destroy-children!",
-  "cljs.core/map", "cljs.core/into", "dommy.template/node",
-  "domina/append!", "btccssq.main/add-message", "_", "ajax.core/POST",
-  "domina/value", "btccssq.main/init", "ajax.core/GET",
-  "domina.events/listen!"]}
+ ["btccssq.main/widget", "widget", "data", "owner",
+  "btccssq.main/t8685", "this__3971__auto__", "writer__3972__auto__",
+  "opt__3973__auto__", "cljs.core/-write", "this__4932__auto__",
+  "_8687", "meta8686", "btccssq.main/->t8685", "js/React.DOM.div",
+  "om.core/root", "js/document", "p__8688", "map__8690",
+  "cljs.core/seq?", "cljs.core/apply", "cljs.core/hash-map",
+  "cljs.core/get", "btccssq.main/render-message", "message", "user",
+  "btccssq.main/render-messages", "messages", "messages-div",
+  "domina/by-id", "domina/destroy-children!", "cljs.core/map",
+  "cljs.core/into", "dommy.template/node", "domina/append!",
+  "btccssq.main/add-message", "_", "ajax.core/POST", "domina/value",
+  "btccssq.main/init", "ajax.core/GET", "domina.events/listen!"]}
