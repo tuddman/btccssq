@@ -1,0 +1,22 @@
+// Compiled by ClojureScript 0.0-2127
+goog.provide('btccssq.main');
+goog.require('cljs.core');
+goog.require('domina.events');
+goog.require('domina');
+goog.require('ajax.core');
+goog.require('dommy.template');
+goog.require('dommy.template');
+goog.require('domina.events');
+goog.require('domina');
+goog.require('ajax.core');
+btccssq.main.render_message = (function render_message(p__12429){var map__12431 = p__12429;var map__12431__$1 = ((cljs.core.seq_QMARK_(map__12431))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__12431):map__12431);var user = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12431__$1,cljs.core.constant$keyword$101);var message = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12431__$1,cljs.core.constant$keyword$102);return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$103,new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$104,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$73,user], null),message," - ",user], null)], null);
+});
+btccssq.main.render_messages = (function render_messages(messages){var messages_div = domina.by_id("messages");domina.destroy_children_BANG_(messages_div);
+return domina.append_BANG_(messages_div,dommy.template.node(cljs.core.into(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.constant$keyword$105], null),cljs.core.map.cljs$core$IFn$_invoke$arity$2(btccssq.main.render_message,messages))));
+});
+btccssq.main.add_message = (function add_message(_){return ajax.core.POST.cljs$core$IFn$_invoke$arity$variadic("/add-message",cljs.core.array_seq([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.constant$keyword$87,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.constant$keyword$102,domina.value(domina.by_id("message")),cljs.core.constant$keyword$101,domina.value(domina.by_id("user"))], null),cljs.core.constant$keyword$89,btccssq.main.render_messages], null)], 0));
+});
+btccssq.main.init = (function init(){ajax.core.GET.cljs$core$IFn$_invoke$arity$variadic("/messages",cljs.core.array_seq([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.constant$keyword$89,btccssq.main.render_messages], null)], 0));
+return domina.events.listen_BANG_.cljs$core$IFn$_invoke$arity$3(domina.by_id("send"),cljs.core.constant$keyword$106,btccssq.main.add_message);
+});
+goog.exportSymbol('btccssq.main.init', btccssq.main.init);

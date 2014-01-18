@@ -1,0 +1,43 @@
+
+button {
+				width:120px;
+				margin: 7px;
+				margin-right:0px;
+			}
+			select {
+				width:120px;
+			}
+			input {
+				width:120px;
+			}
+			#right-panel {
+				margin:8px;
+			}
+			#order_form {
+				padding: 10px 0px;
+				width: 270px;
+			}
+			.bid_id {
+
+  border: solid 2px blue;
+			}
+			.bid_px {
+
+  border: solid 2px blue;
+			}
+			.table {
+				width:500px;
+			}
+			.ask_id {
+
+  border: solid 2px blue;
+			}
+			.ask_px {
+
+  border: solid 2px blue;
+			}
+			.book_container {
+				float:left;
+				margin-left:10px;
+  border: solid 2px blue;
+}
