@@ -18,26 +18,20 @@ button {
 				width: 270px;
 			}
 			.bid_id {
-
-  border: solid 2px blue;
+        border: solid 2px grey;
 			}
 			.bid_px {
-
-  border: solid 2px blue;
+        border: solid 2px grey;
 			}
 			.table {
-				width:500px;
 			}
 			.ask_id {
-
-  border: solid 2px blue;
+        border: solid 2px grey;
 			}
 			.ask_px {
-
-  border: solid 2px blue;
+        border: solid 2px grey;
 			}
 			.book_container {
-				float:left;
-				margin-left:10px;
-  border: solid 2px blue;
-}
+		  	padding: 10px;
+        border: solid 2px blue;
+      }

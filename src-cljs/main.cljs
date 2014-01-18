@@ -14,10 +14,10 @@
 (om/root {} widget (.getElementById js/document "some-id"))
 
 
-(defn render-message [{:keys [message user]}]
+#_(defn render-message [{:keys [message user]}]
   [:li [:p {:id user} message " - " user]])
 
-(defn render-messages [messages]
+#_(defn render-messages [messages]
   (let [messages-div (by-id "messages")]
     (destroy-children! messages-div)
     (->> messages
@@ -26,12 +26,12 @@
          template/node
          (append! messages-div))))
 
-(defn add-message [_]
+#_(defn add-message [_]
   (POST "/add-message"
         {:params {:message (value (by-id "message"))
                   :user    (value (by-id "user"))}
          :handler render-messages}))
 
-(defn ^:export init []
+#_(defn ^:export init []
   (GET "/messages" {:handler render-messages})
   (listen! (by-id "send") :click add-message))

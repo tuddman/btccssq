@@ -19,8 +19,14 @@
   (layout/render "order.html"))
 
 
+(defn order2-page []
+  (layout/render "order2.html"))
+
+
+
 (defroutes home-routes
   (GET "/" [] (home-page))
   (GET "/about" [] (about-page))
   (GET "/update" [] (update-page))
-  (GET "/order" [] (order-page)))
+  (GET "/order" [] (order-page))
+  (GET "/order2" [] (order2-page)))
