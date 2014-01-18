@@ -7,11 +7,11 @@
             [om.dom :as dom :include-macros true]))
 
 
-(defn widget [data owner]
+#_(defn widget [data owner]
   (om/component
-    (dom/div nil "Hello world!")))
+    (dom/div nil "Hello NYC!")))
 
-(om/root {} widget (.getElementById js/document "some-id"))
+#_(om/root {} widget (.getElementById js/document "some-id"))
 
 
 #_(defn render-message [{:keys [message user]}]
