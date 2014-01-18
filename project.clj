@@ -1,23 +1,30 @@
-(defproject
-  btccssq
-  "0.1.0-SNAPSHOT"
+(defproject  btccssq "0.1.0-SNAPSHOT"
+  :description  "FIXME: write description"
+  :url  "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/clojurescript "0.0-2138"]
+                 [org.clojure/core.async "0.1.267.0-0d7780-alpha"]
+                 [om "0.1.7"]
+                 [ring-server "0.3.1"]
+                 [domina "1.0.2"]
+                 [markdown-clj "0.9.40"]
+                 [environ "0.4.0"]
+                 [com.taoensso/timbre "2.7.1"]
+                 [prismatic/dommy "0.1.2"]
+                 [com.taoensso/tower "2.0.1"]
+                 [org.clojure/clojure "1.5.1"]
+                 [cljs-ajax "0.2.2"]
+                 [compojure "1.1.6"]
+                 [selmer "0.5.8"]
+                 [lib-noir "0.7.9"]
+                 [com.postspectacular/rotor "0.1.0"]]
+
+  :plugins [[lein-cljsbuild "1.0.1-SNAPSHOT"]]
+
   :repl-options
   {:init-ns btccssq.repl}
-  :dependencies
-  [[ring-server "0.3.1"]
-   [domina "1.0.2"]
-   [markdown-clj "0.9.40"]
-   [environ "0.4.0"]
-   [com.taoensso/timbre "2.7.1"]
-   [prismatic/dommy "0.1.2"]
-   [org.clojure/clojurescript "0.0-2127"]
-   [com.taoensso/tower "2.0.1"]
-   [org.clojure/clojure "1.5.1"]
-   [cljs-ajax "0.2.2"]
-   [compojure "1.1.6"]
-   [selmer "0.5.8"]
-   [lib-noir "0.7.9"]
-   [com.postspectacular/rotor "0.1.0"]]
 
     :cljsbuild {
     :builds {
@@ -48,12 +55,9 @@
    :dev
    {:dependencies [[ring-mock "0.1.5"] [ring/ring-devel "1.2.1"]],
     :env {:selmer-dev true}}}
-  :url
-  "http://example.com/FIXME"
+
   :plugins
   [[lein-ring "0.8.10"]
    [lein-environ "0.4.0"]
    [lein-cljsbuild "0.3.3"]]
-  :description
-  "FIXME: write description"
   :min-lein-version "2.0.0")
