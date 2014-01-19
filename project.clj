@@ -21,7 +21,9 @@
                  [lib-noir "0.7.9"]
                  [com.postspectacular/rotor "0.1.0"]
                  [korma "0.3.0-RC6"]
-                 [com.h2database/h2 "1.3.174"]]
+                 [com.h2database/h2 "1.3.174"]
+                 [cheshire "5.3.1"]
+                 [com.novemberain/monger "1.7.0"]]
 
   :plugins [[lein-cljsbuild "1.0.1"]
             [lein-ring "0.8.10"]

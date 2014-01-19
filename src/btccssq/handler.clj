@@ -35,7 +35,7 @@
     {:path "btccssq.log", :max-size (* 512 1024), :backlog 10})
   (if (env :selmer-dev) (parser/cache-off!))
   (timbre/info "btccssq started successfully"))
-  (schema/create-tables)
+  #_(schema/create-tables)
 
 (defn destroy
   "destroy will be called when your application

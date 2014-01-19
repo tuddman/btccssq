@@ -16,23 +16,38 @@ input {
 	padding: 10px 0px;
 	width: 270px;
 }
+tr.bestbid {
+
+}
+#bids_container {
+	margin-right: 5px;
+}
+
+#asks_container {
+	margin-left: 5px; 
+}
 .bid_id {
-	border: solid 2px grey;
+	border: solid 1px grey;
 }
 .bid_px {
-	border: solid 2px grey;
+	border: solid 1px grey;
 }
-.table.bids {
+.table.orderbook {
 	font-size:150%;
 }
 .ask_id {
-	border: solid 2px grey;
+	border: solid 1px grey;
 }
 .ask_px {
-	border: solid 2px grey;
+	border: solid 1px grey;
 }
 .book_container {
 	padding: 10px;
+	border: solid 2px blue;
+}
+#title_banner {
+	padding: 10px;
+	margin: 10px;
 	border: solid 2px blue;
 }
 tr.bestbid {

@@ -1,6 +1,6 @@
 {% extends "btccssq/views/templates/base.html" %}
 {% block content %}
-<div class="book_container">
+<div id="title_banner">
 
     <h1>Satoshi Square NYC!</h1>
      <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -30,32 +30,50 @@
 </pre>
 
 <div class="col-md-9">
-	<table class="table bids">
+	<table class="table orderbook">
 	
 		<thead>
 			<tr>
-				<th>Satoshi ID</th>
+				<th>Satoshi ID is &rarr;</th>
 				<th>Buying at</th>
-				<th>Selling at</th>
+				<th>Selling at </th>
 				<th>Satoshi ID</th>
 			</tr>
 		</thead>
+
 		<tbody>
-			<tr class="bestbid">
-				<td>001</td>
-				<td class="spt">820.56 (0.01)</td>
+
+            <tr class="bestbid">
 				<td>-</td>
 				<td>-</td>
 			</tr>
-
-             
-            {% for order in orders %}
+			
+			{% for order in orders %}
               <tr>
-                <td class="spt">  {{order.SATOSHIID}}  </td>
+                <td>  {{order.SATOSHIID}}  </td>
                 <td>  {{order.PRICE}} ( {{order.QUANTITY}} ) </td>
               </tr>
             {% endfor %}
 
+
+            <div id="asks_container">
+
+	            <tr class="bestask">
+					<td>-</td>
+					<td>-</td>
+				</tr>
+				
+				{% for order in orders %}
+	              <tr>
+	                <td>  {{order.SATOSHIID}}  </td>
+	                <td>  {{order.PRICE}} ( {{order.QUANTITY}} ) </td>
+	              </tr>
+	            {% endfor %}
+
+            </div> 
+
+
+            
 			<tr>
 				<td>-</td>
 				<td class="spt">-</td>
@@ -71,11 +89,11 @@
 
 <div class="col-md-3">
 
-	<h2>Coinbase Value</h2>
+	<h3>Other Exchanges:</h3>
 	
 	<pre>
 
-	<div id="btce">
+	<div id="coinbase">
 		<script>
 			$.ajax({
 				url: 'https://coinbase.com/api/v1/prices/buy',
@@ -84,10 +102,10 @@
 				dataType: 'jsonp',
 				success:
 				function(data) {
-					$("#btce").html("$ " + data.subtotal.amount)
+					$("#coinbase").html("$ " + data.subtotal.amount + " - Coinbase")
 					console.log(data.subtotal.amount)
 				},
-				error: function() { alert('Failed!'); },
+				error: function() { alert('-----'); },
 				//beforeSend: setHeader
 			});
 		</script>

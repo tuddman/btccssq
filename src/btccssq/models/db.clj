@@ -1,11 +1,39 @@
 (ns btccssq.models.db
   (:use korma.core
         [korma.db :only (defdb)])
-  (:require [btccssq.models.schema :as schema]))
+  (:require [btccssq.models.schema :as schema]
+            [monger.core :as mg]
+            [monger.collection :as mc])
+  (:import [org.bson.types ObjectId]
+           [com.mongodb DB WriteConcern]))
 
 (defdb db schema/db-spec)
 
 (defentity orders)
+
+;; MONGO DB SECTION
+
+;; Now connect to MongoDB. If db doesn't exist, it will be created.
+
+(mg/connect!)
+(mg/set-db! (mg/get-db "btccssq"))
+
+(defn save-bid-order-to-mongo
+"alt way to store orders. this stores order into mongo collection"
+  [satoshiid quantity price]
+    (mc/insert "bids" { :_id (ObjectId.) :SATOSHIID satoshiid :QUANTITY quantity :PRICE price }))
+
+
+(defn save-ask-order-to-mongo
+"alt way to store orders. this stores order into mongo collection"
+  [satoshiid quantity price]
+    (mc/insert "asks" { :_id (ObjectId.) :SATOSHIID satoshiid :QUANTITY quantity :PRICE price }))
+
+(defn get-orders-from-mongo 
+  [type]
+  (mc/find-maps (str type)))
+
+;; END - MONDO DB SECTION
 
 (defn save-order
   [satoshiid quantity price]

@@ -6,7 +6,7 @@
 
 (defn home-page [& []]
   (layout/render "home.html"
-                 {:orders (db/get-orders)}))
+                 {:orders (db/get-orders-from-mongo "bids")}))
 
 (defn about-page []
   (layout/render "about.html"))
