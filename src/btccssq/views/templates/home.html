@@ -1,14 +1,74 @@
 {% extends "btccssq/views/templates/base.html" %}
 {% block content %}
- <div class="jumbotron">
+<div class="jumbotron">
+
     <h1>Satoshi Square NYC!</h1>
      <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          brought to you by the NYC Bitcoin Center
      </h3>
-     <h3>GOTO http://site.com/order on your phone</h3>
+     <h3>GOTO <a href="/order">http://site.com/order</a> on your phone</h3>
  </div>
 
+<pre>
+	<table class="table table-striped">
+		<h4>LATEST TRANSACTIONS</h4>
+		<tbody>
+			<tr>
+				<td>001 bought 3.00BTC from 006 @ $802.67</td>
+			</tr>
+			<tr>
+				<td>021 bought 0.30BTC from 006 @ $805.54</td>
+			</tr>
+			<tr>
+				<td>001 bought 4.00BTC from 006 @ $802.67</td>
+			</tr>
+			<tr>
+				<td>001 bought 1.89BTC from 006 @ $802.67</td>
+			</tr>
+		</tbody>
+	</table>
+</pre>
 
+<div class="col-md-9">
+	<table class="table bids">
+		<h2>BIDS</h2>
+		<thead>
+			<tr>
+				<th>Satoshi ID</th>
+				<th>Buying at</th>
+				<th>Selling at</th>
+				<th>Satoshi ID</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="bestbid">
+				<td>001</td>
+				<td class="spt">820.56 (0.01)</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>005</td>
+				<td class="spt">822.34 (3)</td>
+				<td>822.34 (3)</td>
+				<td>010</td>
+			</tr>
+			<tr>
+				<td>003</td>
+				<td class="spt">818.00 (2.1)</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>-</td>
+				<td class="spt">-</td>
+				<td>834.00 (0.2)</td>
+				<td>011</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
     <div class="book_container">
         <div class="row">
             <h3>Latest Transaction:</h3>
@@ -52,6 +112,11 @@
             <div class="col-md-3 ask_px">
                 <h3>&larr; BEST OFFERS</h3>
               <ul>
+                  {% for item in orders %}
+                    <li>
+                      {{item}}
+                    </li>
+                  {% endfor %}
                 <li>0001</li>
                 <li>0001</li>
                 <li>0001</li>
@@ -73,11 +138,35 @@
 
             </div>
 
+<div class="col-md-3">
 
+	<h2>Coinbase Value</h2>
+		<pre>
 
-             </div>
+	<div id="btce">
+		<script>
+			$.ajax({
+				url: 'https://coinbase.com/api/v1/prices/buy',
+				type: 'GET',
+				crossDomain: true,
+				dataType: 'jsonp',
+				success:
+				function(data) {
+					$("#btce").html("$ " + data.subtotal.amount)
+					console.log(data.subtotal.amount)
+				},
+				error: function() { alert('Failed!'); },
+				//beforeSend: setHeader
+			});
+		</script>
+	</div>
+		</pre>
+
+</div>
+
 
 
 </div>
+
 
 {% endblock %}

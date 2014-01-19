@@ -1,11 +1,12 @@
 (ns btccssq.routes.home
   (:use compojure.core)
   (:require [btccssq.views.layout :as layout]
-            [btccssq.util :as util]))
+            [btccssq.util :as util]
+            [btccssq.models.db :as db]))
 
-(defn home-page []
-  (layout/render
-    "home.html" {}))
+(defn home-page [& []]
+  (layout/render "home.html"
+                 {:orders (db/get-orders)}))
 
 (defn about-page []
   (layout/render "about.html"))

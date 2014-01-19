@@ -1,0 +1,64 @@
+{% extends "btccssq/views/templates/base.html" %}
+{% block content %}
+
+<pre>
+	<table class="table table-striped">
+		<h4>LATEST TRANSACTIONS</h4>
+		<tbody>
+			<tr>
+				<td>001 bought 3.00BTC from 006 @ $802.67</td>
+			</tr>
+			<tr>
+				<td>021 bought 0.30BTC from 006 @ $805.54</td>
+			</tr>
+			<tr>
+				<td>001 bought 4.00BTC from 006 @ $802.67</td>
+			</tr>
+			<tr>
+				<td>001 bought 1.89BTC from 006 @ $802.67</td>
+			</tr>
+		</tbody>
+	</table>
+</pre>
+
+	<table class="table bids">
+		<h2>BIDS</h2>
+		<thead>
+			<tr>
+				<th>Satoshi ID</th>
+				<th>Buying at</th>
+				<th>Selling at</th>
+				<th>Satoshi ID</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="bestbid">
+				<td>001</td>
+				<td class="spt">820.56 (0.01)</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>005</td>
+				<td class="spt">822.34 (3)</td>
+				<td>822.34 (3)</td>
+				<td>010</td>
+			</tr>
+			<tr>
+				<td>003</td>
+				<td class="spt">818.00 (2.1)</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>-</td>
+				<td class="spt">-</td>
+				<td>834.00 (0.2)</td>
+				<td>011</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+{% endblock %}

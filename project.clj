@@ -19,7 +19,9 @@
                  [compojure "1.1.6"]
                  [selmer "0.5.8"]
                  [lib-noir "0.7.9"]
-                 [com.postspectacular/rotor "0.1.0"]]
+                 [com.postspectacular/rotor "0.1.0"]
+                 [korma "0.3.0-RC6"]
+                 [com.h2database/h2 "1.3.174"]]
 
   :plugins [[lein-cljsbuild "1.0.1"]
             [lein-ring "0.8.10"]
