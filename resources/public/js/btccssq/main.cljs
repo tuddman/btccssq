@@ -1,18 +1,10 @@
 (ns btccssq.main
+  (:require [ajax.core :refer [GET POST]]
+            [domina :refer [value by-id destroy-children! append!]]
+            [domina.events :refer [listen!]]
+            [dommy.template :as template]))
 
-  (:require [cljs.core.async :as async :refer [put! chan dropping-buffer]]
-            [om.core :as om :include-macros true]
-            [om.dom :as dom :include-macros true]
-            [goog.events :as events]
-            [goog.style :as gstyle])
-  (:import [goog.ui IdGenerator]
-           [goog.events EventType]))
 
-(defn widget [data owner]
-  (om/component
-    (dom/div nil "Hello world!")))
-
-(om/root {} widget (.getElementById js/document "some-id"))
 
 
 (defn render-message [{:keys [message user]}]

@@ -1,6 +1,7 @@
 (ns btccssq.handler
   (:require [compojure.core :refer [defroutes]]
             [btccssq.routes.home :refer [home-routes]]
+          ;  [btccssq.routes.mobile :refer [mobile-routes]]
             [noir.util.middleware :as middleware]
             [compojure.route :as route]
             [taoensso.timbre :as timbre]
@@ -61,5 +62,5 @@
    :access-rules
    []
    :formats
-   [:json-kw :edn]))
+   [:json-kw]))
 

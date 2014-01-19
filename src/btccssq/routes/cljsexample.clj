@@ -11,7 +11,7 @@
       :user    "Bar"}]))
 
 (defroutes cljs-routes
-  (GET "/cljsexample" [message user] (layout/render "cljsexample.html"))
+  (GET "/cljsexample" [] (layout/render "cljsexample.html"))
   (GET "/messages" [] (response/json @messages))
   (POST "/add-message" [message user]
         (response/json

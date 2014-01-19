@@ -8,6 +8,7 @@
                  [org.clojure/core.async "0.1.267.0-0d7780-alpha"]
                  [om "0.1.7"]
                  [ring-server "0.3.1"]
+                 [enfocus "2.0.2"]
                  [domina "1.0.2"]
                  [markdown-clj "0.9.40"]
                  [environ "0.4.0"]
@@ -31,18 +32,18 @@
     :builds {
              :dev {
                    :source-paths ["src-cljs"]
-                   :compiler {:output-to "resources/public/js/cljs.js"
+                   :compiler {:output-to "resources/public/js/site.js"
                               :output-dir "resources/public/js"
                               :optimizations :none
                               :pretty-print true
-                              :source-map "resources/public/js/cljs.js.map"}}
+                              :source-map "resources/public/js/site.js.map"}}
              :prod {
                     :source-paths ["src-cljs"]
-                    :compiler {:output-to "resources/public/js-min/cljs-min.js"
+                    :compiler {:output-to "resources/public/js-min/site-min.js"
                                :output-dir "resources/public/js-min"
                                :optimizations :advanced
                                :pretty-print false
-                               :source-map "resources/public/js-min/cljs-min.js.map"}}}}
+                               :source-map "resources/public/js-min/site-min.js.map"}}}}
 
   :ring {:handler btccssq.handler/app,
          :init btccssq.handler/init,
