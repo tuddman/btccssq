@@ -35,12 +35,15 @@
     {:path "btccssq.log", :max-size (* 512 1024), :backlog 10})
   (if (env :selmer-dev) (parser/cache-off!))
   (timbre/info "btccssq started successfully"))
+  (schema/create-tables)
 
 (defn destroy
   "destroy will be called when your application
    shuts down, put any clean up code here"
   []
   (timbre/info "btccssq is shutting down..."))
+
+
 
 (defn template-error-page [handler]
   (if (env :selmer-dev)
