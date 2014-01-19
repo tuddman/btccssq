@@ -1,6 +1,8 @@
 (ns btccssq.handler
   (:require [compojure.core :refer [defroutes]]
             [btccssq.routes.home :refer [home-routes]]
+            [btccssq.routes.order :refer [order-routes]]
+            [btccssq.models.schema :as schema]
             [noir.util.middleware :as middleware]
             [compojure.route :as route]
             [taoensso.timbre :as timbre]
@@ -55,7 +57,7 @@
 
 (def app
  (middleware/app-handler
-   [cljs-routes home-routes app-routes]
+   [cljs-routes home-routes order-routes app-routes]
    :middleware
    [template-error-page]
    :access-rules
