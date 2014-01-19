@@ -1,37 +1,43 @@
-
 button {
-				width:120px;
-				margin: 7px;
-				margin-right:0px;
-			}
-			select {
-				width:120px;
-			}
-			input {
-				width:120px;
-			}
-			#right-panel {
-				margin:8px;
-			}
-			#order_form {
-				padding: 10px 0px;
-				width: 270px;
-			}
-			.bid_id {
-        border: solid 2px grey;
-			}
-			.bid_px {
-        border: solid 2px grey;
-			}
-			.table {
-			}
-			.ask_id {
-        border: solid 2px grey;
-			}
-			.ask_px {
-        border: solid 2px grey;
-			}
-			.book_container {
-		  	padding: 10px;
-        border: solid 2px blue;
-      }
+	width:120px;
+	margin: 7px;
+	margin-right:0px;
+}
+select {
+	width:120px;
+}
+input {
+	width:120px;
+}
+#right-panel {
+	margin:8px;
+}
+#order_form {
+	padding: 10px 0px;
+	width: 270px;
+}
+.bid_id {
+	border: solid 2px grey;
+}
+.bid_px {
+	border: solid 2px grey;
+}
+.table.bids {
+	font-size:200%;
+}
+.ask_id {
+	border: solid 2px grey;
+}
+.ask_px {
+	border: solid 2px grey;
+}
+.book_container {
+	padding: 10px;
+	border: solid 2px blue;
+}
+tr.bestbid {
+	background-color:#CCFFCC;
+}
+.table tbody tr td.spt {
+	border-right:10px solid white;
+       }	
