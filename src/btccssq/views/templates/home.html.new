@@ -21,7 +21,6 @@
 	</table>
 </pre>
 
-<div class="col-md-9">
 	<table class="table bids">
 		<h2>BIDS</h2>
 		<thead>
@@ -59,37 +58,6 @@
 			</tr>
 		</tbody>
 	</table>
-
-</div>
-
-<div class="col-md-3">
-
-	<h2>Coinbase Value</h2>
-		<pre>
-
-	<div id="btce">
-		<script>
-			$.ajax({
-				url: 'https://coinbase.com/api/v1/prices/buy',
-				type: 'GET',
-				crossDomain: true,
-				dataType: 'jsonp',
-				success:
-				function(data) {
-					$("#btce").html("$ " + data.subtotal.amount)
-					console.log(data.subtotal.amount)
-				},
-				error: function() { alert('Failed!'); },
-				//beforeSend: setHeader
-			});
-		</script>
-	</div>
-		</pre>
-
-</div>
-
-
-
 </div>
 
 

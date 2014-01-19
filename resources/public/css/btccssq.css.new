@@ -23,7 +23,7 @@ input {
 	border: solid 2px grey;
 }
 .table.bids {
-	font-size:150%;
+	font-size:200%;
 }
 .ask_id {
 	border: solid 2px grey;
