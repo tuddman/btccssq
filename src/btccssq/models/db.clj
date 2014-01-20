@@ -29,9 +29,13 @@
   [satoshiid quantity price]
     (mc/insert "asks" { :_id (ObjectId.) :SATOSHIID satoshiid :QUANTITY quantity :PRICE price }))
 
-(defn get-orders-from-mongo 
-  [type]
-  (mc/find-maps (str type)))
+(defn get-coll-from-mongo 
+  [coll-name]
+  (mc/find-maps (str coll-name)))
+
+(defn save-transaction-to-mongo
+  [buyerid quantity sellerid price]
+  (mc/insert "transactions" { :_id (ObjectId.) :BUYERID buyerid :SELLERID sellerid :QUANTITY quantity :PRICE price }))
 
 ;; END - MONDO DB SECTION
 

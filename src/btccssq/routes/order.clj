@@ -9,7 +9,7 @@
 (defn order-page [& [satoshiid quantity price error]]
   (layout/render "order.html" {
                                :error  error
-                               :orders (db/get-orders-from-mongo "bids")}))
+                               :orders (db/get-coll-from-mongo "bids")}))
 
 
 
@@ -47,7 +47,7 @@
 
 
 
-(defn save-order [satoshiid quantity price]
+#_(defn save-order [satoshiid quantity price]
   (cond
 
     (empty? satoshiid)

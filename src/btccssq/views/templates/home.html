@@ -2,28 +2,27 @@
 {% block content %}
 <div id="title_banner">
 
-    <h1>Satoshi Square NYC!</h1>
+    <h1>The NYC Bitcoin Center presents: <b>Satoshi Square NYC!</b></h1>
      <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         brought to you by the NYC Bitcoin Center
-     </h3>
-     <h3>GOTO <a href="/order">http://site.com/order</a> on your phone</h3>
+		GOTO <a href="/order">http://site.com/order</a> on your phone to participate.
+	</h3>
 </div>
 
 <pre>
 	<table class="table table-striped">
-		<h4>LATEST TRANSACTIONS</h4>
+
 		<tbody>
 			<tr>
-				<td>001 bought 3.00BTC from 006 @ $802.67</td>
+				<td>001 bought 3.00 BTC from 006 @ $802.67 btc</td>
 			</tr>
 			<tr>
-				<td>021 bought 0.30BTC from 006 @ $805.54</td>
+				<td>021 bought 0.30 BTC from 006 @ $805.54 /btc</td>
 			</tr>
 			<tr>
-				<td>001 bought 4.00BTC from 006 @ $802.67</td>
+				<td>001 bought 4.00 BTC from 006 @ $802.67 /btc</td>
 			</tr>
 			<tr>
-				<td>001 bought 1.89BTC from 006 @ $802.67</td>
+				<td>001 bought 1.89 BTC from 006 @ $802.67 /btc</td>
 			</tr>
 		</tbody>
 	</table>
@@ -98,7 +97,10 @@
 		<div id="bitfinex"></div>
 		<div id="bitstamp"></div>
 		<div id="btc-e"></div>
+		<div id="itbit"></div>
 		<div id="average"></div>
+
+		<span id="clock">&nbsp;</span>
 
 	</pre>	
 
@@ -111,7 +113,6 @@
 				success:
 				function(data) {
 					$("#coinbase").html("$ " + data.subtotal.amount + " - Coinbase")
-					console.log(data.subtotal.amount)
 				},
 				error: function() { console.log('-----'); },
 				//beforeSend: setHeader
@@ -119,9 +120,23 @@
 		</script>
 
 
+		<script>
+			$.ajax({
+				url: 'https://www.itbit.com/api/feeds/ticker/XBTUSD',
+				type: 'GET',
+				crossDomain: true,
+				dataType: 'jsonp',
+				success:
+				function(data) {
+					$("#itbit").html("$ " + data.bid + " - ItBit");
+				},
+				error: function() { console.log('-----'); }
+				//beforeSend: setHeader
+			});
+		</script>
 
 
-<script>
+		<script>
 
 			$.ajax({
 				url: 'https://api.bitcoinaverage.com/no-mtgox/all',
@@ -139,8 +154,41 @@
 				//beforeSend: setHeader
 			});
 
+		</script>
 
-</script>
+
+		<script type="text/javascript">
+
+			function updateClock ( )
+			{
+			  var currentTime = new Date ( );
+
+			  var currentHours = currentTime.getHours ( );
+			  var currentMinutes = currentTime.getMinutes ( );
+			  var currentSeconds = currentTime.getSeconds ( );
+
+			  // Pad the minutes and seconds with leading zeros, if required
+			  currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+			  currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+
+			  // Choose either "AM" or "PM" as appropriate
+			  var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+
+			  // Convert the hours component to 12-hour format if needed
+			  currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+
+			  // Convert an hours component of "0" to "12"
+			  currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+
+			  // Compose the string for display
+			  var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+
+			  // Update the time display
+			  document.getElementById("clock").firstChild.nodeValue = currentTimeString;
+			}
+
+		</script>
+
 
 
 
