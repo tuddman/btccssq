@@ -83,17 +83,25 @@
 		</tbody>
 	</table>
 
+* You post it. You honor it.
 </div>
 
 
 
 <div class="col-md-3">
 
-	<h3>Other Exchanges:</h3>
+	<h3>Online Exchanges:</h3>
 	
 	<pre>
 
-	<div id="coinbase">
+		<div id="coinbase"></div>
+		<div id="bitfinex"></div>
+		<div id="bitstamp"></div>
+		<div id="btc-e"></div>
+		<div id="average"></div>
+
+	</pre>	
+
 		<script>
 			$.ajax({
 				url: 'https://coinbase.com/api/v1/prices/buy',
@@ -105,16 +113,38 @@
 					$("#coinbase").html("$ " + data.subtotal.amount + " - Coinbase")
 					console.log(data.subtotal.amount)
 				},
-				error: function() { alert('-----'); },
+				error: function() { console.log('-----'); },
 				//beforeSend: setHeader
 			});
 		</script>
-	</div>
-	
 
-     </pre>
 
-</div>
+
+
+<script>
+
+			$.ajax({
+				url: 'https://api.bitcoinaverage.com/no-mtgox/all',
+				type: 'GET',
+				crossDomain: true,
+				success:
+				function(data) {
+					$("#average").html("$ " + data.USD.averages.last + " - Average");
+					$("#bitfinex").html("$ " + data.USD.exchanges.bitfinex.rates.last + " - Bitfinex");
+					//$("#localbitcoin").html("$ " + data.USD.exchanges.localbitcoins.rates.last + " - LocalBitcoins");
+					$("#bitstamp").html("$ " + data.USD.exchanges.bitstamp.rates.last + " - BitStamp");	
+					$("#btc-e").html("$ " + data.USD.exchanges.btce.rates.last + " - BTC-e");	
+				},
+				error: function() { console.log('-----'); },
+				//beforeSend: setHeader
+			});
+
+
+</script>
+
+
+
+
 
 
 
