@@ -1,30 +1,85 @@
 (ns btccssq.main
-  (:require [ajax.core :refer [GET POST]]
-            [domina :refer [value by-id destroy-children! append!]]
-            [domina.events :refer [listen!]]
-            [dommy.template :as template]))
+  (:require
+   [domina :as dom]
+   [domina.css :as css]
+   [domina.events :as events]
+   [cljs.core.async :refer [chan <! >! put!]]
+   [cljs.reader :as reader]
+   [btccssq.util :as util])
+  (:require-macros
+   [cljs.core.async.macros :refer [go]]))
+
+(def send (chan))
+(def receive (chan))
+(def alert-view (chan))
+
+(def ws-url "ws://192.168.2.2:3001/async")
+(def ws (new js/WebSocket ws-url))
 
 
+(defn event-chan
+  [c el type]
+  (let [writer #(put! c %)]
+    (events/listen! el type writer)
+    {:chan c
+     :unsubscribe #(.removeEventListener el type writer)}))
 
+(defn my-name []
+  (let [name (-> "input#name" css/sel dom/single-node dom/value)]
+    (if (clojure.string/blank? name) "Anonymous" name)))
 
-(defn render-message [{:keys [message user]}]
-  [:li [:p {:id user} message " - " user]])
+(defn make-sender []
+  (event-chan send (css/sel "input#send") :click)
+  (event-chan send (css/sel "input#message") :keypress)
+  (go
+   (while true
+     (let [evt  (<! send)
+           name (my-name)
+           msg  (-> "input#message" css/sel dom/single-node dom/value)]
+       (when (or (= (events/event-type evt) "click")
+                 (= (.-keyCode (events/raw-event evt)) 13))
+         (.send ws {:msg msg :name name}))))))
 
-(defn render-messages [messages]
-  (let [messages-div (by-id "messages")]
-    (destroy-children! messages-div)
-    (->> messages
-         (map render-message)
-         (into [:ul])
-         template/node
-         (append! messages-div))))
+(defn msg-template [data]
+  (let [me   (if (= (my-name) (:name data)) " me")
+        ts   (util/format-date (:timestamp data))
+        name (:name data)
+        msg  (:msg data)]
+    (str "<div class=\"msg new" me "\">"
+         "<span class=\"time\">" ts
+         "</span><span class=\"name\">" name
+         "</span><span class=\"msg\">"  msg
+         "</span></div>")))
 
-(defn add-message [_]
-  (POST "/add-message"
-        {:params {:message (value (by-id "message"))
-                  :user    (value (by-id "user"))}
-         :handler render-messages}))
+(defn messages []
+  (css/sel "div#received-msg-wrapper div#messages"))
 
-(defn ^:export init []
-  (GET "/messages" {:handler render-messages})
-  (listen! (by-id "send") :click add-message))
+(defn add-message []
+  (go
+   (while true
+     (let [msg            (<! receive)
+           raw-data       (.-data msg)
+           data           (reader/read-string raw-data)
+           templated-data (msg-template data)]
+       (dom/insert! (messages) templated-data)
+       (>! alert-view (-> (messages) dom/children last))))))
+
+(defn highlight-new-message []
+  (go
+   (while true
+     (let [alert-msg (<! alert-view)]
+       (js/setTimeout
+        #(dom/remove-class! alert-msg "new")
+        200)))))
+
+(defn make-receiver []
+  (set! (.-onmessage ws) (fn [msg] (put! receive msg)))
+  (add-message)
+  (highlight-new-message))
+
+(defn init! []
+  (make-sender)
+  (make-receiver))
+
+(def on-load
+  (set! (.-onload js/window) init!))

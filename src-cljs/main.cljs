@@ -5,7 +5,7 @@
    [domina.events :as events]
    [cljs.core.async :refer [chan <! >! put!]]
    [cljs.reader :as reader]
-   [cljs-core-async-chat.cljs.util :as util])
+   [btccssq.util :as util])
   (:require-macros
    [cljs.core.async.macros :refer [go]]))
 
@@ -13,7 +13,7 @@
 (def receive (chan))
 (def alert-view (chan))
 
-(def ws-url "ws://192.168.2.2:3000/async")
+(def ws-url "ws://192.168.2.2:3001/async")
 (def ws (new js/WebSocket ws-url))
 
 

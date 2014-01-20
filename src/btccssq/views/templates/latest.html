@@ -13,10 +13,27 @@
 	<input type="text" name="sellerid" class="form-control" placeholder="seller ID #"> @
 	<input type="text" name="price" class="form-control" placeholder="price (per btc)">
 
-	<input type="text" class="form-control" placeholder="MAGIC NUMBER">
+	<input type="password" name="magic" class="form-control" placeholder="MAGIC NUMBER">
 
-	<button type="button" class="btn btn-primary">Register Transaction!</button>
+	<button type="submit" class="btn btn-primary">Register Transaction!</button>
 </form>
+
+        <div id="content">
+          <h2>WebSocket-based chat using httpkit and core.async.</h2>
+
+          <p>Give us your name, or we will use "Anonymous:" <input id="name" type="text" value="" name="name" /></p>
+
+          <div id="received-msg-wrapper">
+            <div id="messages"></div>
+          </div>
+
+          <p><input id="message" type="text" value="" name="message" /> <input id="send" type="submit" value="send message" name="send message" /></p>
+        </div>
+
+       <script src="js/goog/base.js"></script>
+       <script src="js/site.js"></script>
+
+
 
 </body>
 </html>
